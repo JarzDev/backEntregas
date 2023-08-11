@@ -8,17 +8,17 @@ const usersModel = db.define('users', {
         autoIncrement: true
       },
       user: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(255),
         allowNull: false,
         unique: true
       },
       email: {
-        type: DataTypes.TEXT ,
+        type: DataTypes.STRING(255) ,
         allowNull: false,
         unique: true
       },
       password: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(255),
         allowNull: false
       }
 
