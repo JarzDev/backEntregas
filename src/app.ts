@@ -8,7 +8,7 @@ import db from "./config/dbConnect";
 const PORT = process.env.PORT || 3001; 
 const app = express();
  
-const allowedOrigins = ['https://entregas.agilenetworks.cl/'];
+const allowedOrigins = ['*.*'];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins
