@@ -23,7 +23,7 @@ app.listen(PORT, () => {
   
 const  dbConnection= async()=> {
     try {
-       
+    await db.sync();   
     await db.authenticate();
         
 
