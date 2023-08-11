@@ -8,14 +8,9 @@ import db from "./config/dbConnect";
 const PORT = process.env.PORT || 3001; 
 const app = express();
  
-const allowedOrigins = ['*.*'];
-
-const options: cors.CorsOptions = {
-  origin: allowedOrigins
-};
 
 
-app.use(cors(options));
+app.use(cors());
 app.use(express.json());
 app.use(router);
 
