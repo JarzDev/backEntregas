@@ -18,7 +18,7 @@ const usersModel = db.define('users', {
         unique: true
       },
       password: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.TEXT,
         allowNull: false
       }
 
