@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 
 const dbConnect = new Sequelize('calc_entregas',  'root', 'password',{//   'Angular', 'F*d@.?AoYud%',
   
-    host: 'localhost:3306',
+    host: 'localhost',
     dialect: 'mysql',/* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
   });
 
