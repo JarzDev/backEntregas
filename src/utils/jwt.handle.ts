@@ -3,7 +3,7 @@ import {sign, verify} from "jsonwebtoken"
 const JWT_SECRET  = process.env.JWT_SECRET || "secretout"
 
 const generateToken =  (id:string) => {
-    const jwt =  sign({id}, JWT_SECRET, {expiresIn: "1h"});
+    const jwt =  sign({id}, JWT_SECRET, {expiresIn: 3600  });
     return jwt;
 }
 

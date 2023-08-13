@@ -1,9 +1,9 @@
 import { Request,Response } from "express"
 import { handleError } from "../utils/errors.handle"
-import entregasModel from "../models/entregas"
+import bonosModel from "../models/bonos"
 
 const getItems= async(req:Request, res:Response)=>{
-    try { const resGet= await entregasModel.findAll();
+    try { const resGet= await bonosModel.findAll();
         res.send(resGet)
     }
      catch (e: any) {
@@ -12,52 +12,52 @@ const getItems= async(req:Request, res:Response)=>{
 }
 const getItem=async(req:Request, res:Response)=>{
     const {id} = req.params;    
-    const product =  await entregasModel.findByPk(id);
+    const product =  await bonosModel.findByPk(id);
 
    if(product){
     res.json(product)
     }else{
         res.status(404).json({
-            msg: `No existe un entrega con el id ${id}`
+            msg: `No existe un bono con el id ${id}`
         })
     }
 }
 
 const getItemsByuserId=async(req:Request, res:Response)=>{
     const {id} = req.params;    
-    const product =  await entregasModel.findAll({where:{user_id:id}});
+    const product =  await bonosModel.findAll({where:{user_id:id}});
 
    if(product){
     res.json(product)
     }else{
         res.status(404).json({
-            msg: `No existe un entrega con el id ${id}`
+            msg: `No existe un bono con el id ${id}`
         })
     }
 }
 
 const getItemsByMesAndUser_id=async(req:Request, res:Response)=>{
     const {id, mes} = req.params;    
-    const product =  await entregasModel.findAll({where:{user_id:id, mes:mes}});
+    const product =  await bonosModel.findAll({where:{user_id:id, mes:mes}});
 
    if(product){
     res.json(product)
     }else{
         res.status(404).json({
-            msg: `No existe un entrega con el id ${id}`
+            msg: `No existe un bono con el id ${id}`
         })
     }
 }
 
 const getItemsByMes = async(req:Request, res:Response)=>{
     const {mes} = req.params;    
-    const product =  await entregasModel.findAll({where:{mes:mes}});
+    const product =  await bonosModel.findAll({where:{mes:mes}});
 
    if(product){
     res.json(product)
     }else{
         res.status(404).json({
-            msg: `No existe un entrega con el id ${mes}`
+            msg: `No existe un bono con el id ${mes}`
         })
     }
 }
@@ -65,12 +65,12 @@ const getItemsByMes = async(req:Request, res:Response)=>{
 const postItem= async( req :Request, res:Response)=>{
     const {body} = req;   
     try {
-        const product = await entregasModel.create(body);
-        res.json({msg: 'entrega creado', product})
+        const product = await bonosModel.create(body);
+        res.json({msg: 'bono creado', product})
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            msg: 'Error Creando entrega'
+            msg: 'Error Creando bono'
         })
     }
     
@@ -78,11 +78,11 @@ const postItem= async( req :Request, res:Response)=>{
 const putItem= async(req:Request, res:Response)=>{
     const {body} = req;   
         const {id} = req.params;
-            const product =  await entregasModel.findByPk(id);
+            const product =  await bonosModel.findByPk(id);
        if (product) {
        try {
         await product.update(body);
-         res.json({msg: 'entrega Actualizado', product})
+         res.json({msg: 'bono Actualizado', product})
          } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -92,20 +92,20 @@ const putItem= async(req:Request, res:Response)=>{
         }
        else{
             res.status(404).json({
-                msg: `No existe un entrega con el id ${id}`
+                msg: `No existe un bono con el id ${id}`
             })
         }
 }
 const deleteItem= async(req:Request, res:Response)=>{
     const {id} = req.params; 
-    const product =  await entregasModel.findByPk(id);
+    const product =  await bonosModel.findByPk(id);
 
     if(product){
      await product.destroy()
-        res.json({msg: `entrega Eliminado`})
+        res.json({msg: `bono Eliminado`})
      }else{
          res.status(404).json({
-             msg: `No existe un entrega con el id ${id}`
+             msg: `No existe un bono con el id ${id}`
          })
      }
 }

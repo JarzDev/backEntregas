@@ -2,29 +2,25 @@ import db from "../config/dbConnect";
 import { DataTypes } from "sequelize";
 import usersModel from "./users";
 
-const entregasModel = db.define('entregas', {
-    id: {
+const bonosModel = db.define('bonos', {
+    bonos_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
-      sku: {
+      bonos: {
         type: DataTypes.INTEGER,
-        allowNull: true
-      },
-      km: {
-        type: DataTypes.FLOAT, 
-        allowNull: true
+        allowNull: false
       },
       mes: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false
       },
 
       fecha: {
         type: DataTypes.DATE,
-        allowNull: true
-      }, 
+        allowNull: false
+      },
 
       user_id: {
         type: DataTypes.INTEGER,
@@ -34,11 +30,12 @@ const entregasModel = db.define('entregas', {
           key: 'id'
         }
       }
-
-    }, {
-      tableName: 'entregas',
+ 
+    },
+     {
+      tableName: 'bonos',
       timestamps: false
     });
-    entregasModel.belongsTo(usersModel, {foreignKey: 'user_id'});
+    bonosModel.belongsTo(usersModel, {foreignKey: 'user_id'});
 
-export default entregasModel; 
+export default bonosModel;
